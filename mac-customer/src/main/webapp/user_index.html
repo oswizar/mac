@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/func.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var data = window.sessionStorage.getItem("user");
+        if (data != null) {
+            var user = JSON.parse(data);
+            $("#showName").html("用户[" + user.name + "]已登录");
+            $("#id").val(user.id);
+            document.getElementById("auto").style.display = "block";
+            document.getElementById("info").style.display = "none";
+        } else {
+            $("#showName").append("用户未登录");
+        }
+    });
+</script>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>首页</title>
+</head>
+
+<body>
+<header>
+
+    <div class="head">
+        <div class="top">
+            <div class="wrapper">
+                <div class="dl fr">
+                    <ul>
+                        <li id="showName"></li>
+                        <input type="text" id="id" style="display: none">
+                        <div id="info" style="display: block">
+                            <li><a href="user_login.html">登录</a></li>
+                            <li><a href="user_regist.html">注册</a></li>
+                        </div>
+
+                        <div id="auto" style="display: none">
+                            <li><a href="user_info.html">修改用户</a></li>
+                            <li><a id="delete" href="#" onclick="deleteIt()">删除用户</a></li>
+                        </div>
+                        <li><a href="user_index.html" onclick="removeSession()">注销</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+
+</body>
+</html>

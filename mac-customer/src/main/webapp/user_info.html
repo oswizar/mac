@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/func.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var data = window.sessionStorage.getItem("user");
+        if (data != null) {
+            var user = JSON.parse(data);
+            $("#showName").html("用户[" + user.name + "]已登录");
+            $("#id").val(user.id);
+            $("#name").val(user.name);
+            $("#password").val(user.password);
+        } else {
+            $("#showName").append("用户未登录");
+        }
+    });
+</script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>用户信息修改页面</title>
+
+</head>
+
+<body>
+<header>
+
+</header>
+
+<div class="wrapper border login-bg">
+    <div class="login">
+        <div class="fl left">
+            <dl>
+                <li id="showName"></li>
+                <dt>修改账号</dt>
+                <input type="text" id="id" style="display: none">
+                <dd class="clearfix">
+                    <span class="fl">帐 号：</span>
+                    <input type="text" id="name" class="fl shr"/>
+                </dd>
+
+                <dd class="clearfix">
+                    <span class="fl">密 码：</span>
+                    <input type="password" id="password" class="fl shr"/>
+                </dd>
+
+
+                <dd class="clearfix">
+                    <span class="fl">&nbsp;</span>
+                    <input type="button" value="提 交" onclick="updateUser()"/>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    <li><a href="user_ing.html">返回</a></li>
+</div>
+</body>
+</html>
