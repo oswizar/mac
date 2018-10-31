@@ -1,9 +1,25 @@
+var contextPath = "";
+$(document).ready(function () {
+    var curWwwPath = window.document.location.href;
+//获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+    var pathName = window.document.location.pathname;
+    var pos = curWwwPath.indexOf(pathName);
+//获取主机地址，如： http://localhost:8083
+    var localhostPaht = curWwwPath.substring(0, pos);
+//获取带"/"的项目名，如：/mdd-web
+    var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+//服务器前缀
+    contextPath = localhostPaht + projectName;
+    //alert(contextPath);
+});
+
+
 //用户注册
 function addUser() {
     var username = $("#name").val();
     var password = $("#password").val();
     if (!username) {
-        alert("账号不能为空");
+        alert("账号不能为空" + contextPath);
     }
     else if (!password) {
         alert("密码不能为空");
@@ -13,7 +29,7 @@ function addUser() {
             "name": username,
             "password": password,
         };
-        var _url = "http://localhost:8080/os/user/showUser";
+        var _url = contextPath + "/user/showUser";
         $.ajax({
             url: _url,
             type: "POST",
@@ -26,7 +42,7 @@ function addUser() {
                 }
                 else {//注册成功
                     alert(msg);
-                    window.location.href = "http://localhost:8080/os/user_index.html";
+                    window.location.href = contextPath + "/user_index.html";
                 }
             }
         });
@@ -48,7 +64,7 @@ function loginUser() {
             "name": username,
             "password": password,
         };
-        var _url = "http://localhost:8080/os/user/loginUser";
+        var _url = contextPath + "/user/loginUser";
         $.ajax({
             url: _url,
             type: "POST",
@@ -63,8 +79,8 @@ function loginUser() {
                 else {//登录成功
                     alert(msg);
                     window.sessionStorage.setItem("user", JSON.stringify(user));
-                    window.location.replace("http://localhost:8080/os/user_ing.html");//不能返回上个页面
-                    //window.location.href= "http://localhost:8080/os/user_ing.html";//能返回上个页面
+                    window.location.replace(contextPath + "/user_ing.html");//不能返回上个页面
+                    //window.location.href= contextPath+"/user_ing.html";//能返回上个页面
                 }
             }
         });
@@ -88,7 +104,7 @@ function updateUser() {
             "name": username,
             "password": password,
         };
-        var _url = "http://localhost:8080/os/user/updateUser";
+        var _url = contextPath + "/user/updateUser";
         $.ajax({
             url: _url,
             type: "POST",
@@ -102,7 +118,7 @@ function updateUser() {
                 else {
                     alert(msg);
                     removeSession();
-                    window.location.replace("http://localhost:8080/os/user_index.html");
+                    window.location.replace(contextPath + "/user_index.html");
                 }
             }
 
@@ -126,7 +142,7 @@ function removeUser() {
     var id = $("#id").val();
     var username = $("#name").val();
     var password = $("#password").val();
-    var _url = "http://localhost:8080/os/user/removeUser";
+    var _url = contextPath + "/user/removeUser";
     var user = {
         "id": id,
         "name": username,
@@ -146,7 +162,7 @@ function removeUser() {
             else {
                 alert(msg);
                 removeSession();
-                window.location.href = "http://localhost:8080/os/user_index.html";
+                window.location.href = contextPath + "/user_index.html";
             }
         }
     });

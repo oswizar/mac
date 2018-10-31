@@ -8,27 +8,27 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, name, password
-  </sql>
+        id, name, password
+    </sql>
 
     <select id="selectUser" resultType="com.xiexing.entity.Stu" parameterType="long">
-    select * from stu where id = #{id}
-  </select>
+        select * from stu where id = #{id}
+    </select>
 
     <select id="selectAllUser" resultType="com.xiexing.entity.Stu">
-    select * from stu
-  </select>
+        select * from stu
+    </select>
 
     <insert id="addUser" parameterType="com.xiexing.entity.Stu" useGeneratedKeys="true" keyProperty="id">
-    insert into stu (name,password) values (#{name},#{password})
-  </insert>
+        insert into stu (name,password) values (#{name},#{password})
+    </insert>
 
     <delete id="removeUser" parameterType="int">
-    delete from stu where id = #{id}
-  </delete>
+        delete from stu where id = #{id}
+    </delete>
 
     <update id="modifyUser" parameterType="com.xiexing.entity.Stu">
-    update stu
+        update stu
         <set>
             <if test="name!=null">
                 name = #{name},
@@ -37,12 +37,12 @@
                 password = #{password}
             </if>
         </set>
-    where id = #{id}
-  </update>
+        where id = #{id}
+    </update>
 
     <select id="selectUserByName" parameterType="string" resultType="com.xiexing.entity.Stu">
-    select * from stu where name = #{name}
-  </select>
+        select * from stu where name = #{name}
+    </select>
 
 
 </mapper>

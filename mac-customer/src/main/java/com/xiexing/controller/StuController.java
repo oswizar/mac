@@ -1,5 +1,6 @@
 package com.xiexing.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.xiexing.entity.Stu;
 import com.xiexing.service.IStuService;
 import org.apache.log4j.Logger;
@@ -18,8 +19,10 @@ import java.util.Map;
 @RequestMapping("/user")
 public class StuController {
 
-    @Autowired
+
+    @Resource
     private IStuService stuService;
+
     private Logger logger = Logger.getLogger(this.getClass());
 
     /**

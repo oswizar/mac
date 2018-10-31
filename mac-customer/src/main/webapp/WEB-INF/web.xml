@@ -3,57 +3,66 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-  <display-name>dubbo_consumer</display-name>
-  <description>dubbo_consumer test</description>
+    <display-name>dubbo_consumer</display-name>
+    <description>dubbo_consumer test</description>
 
 
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+    <!-- 利用Spring提供的ContextLoaderListener监听器去监听ServletContext对象的创建,
+            并初始化WebApplicationContext对象 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
-  <!-- Spring配置文件 -->
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-*.xml</param-value>
-  </context-param>
+    <!-- Spring配置文件  -->
+    <!-- 全局范围内环境参数初始化 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-mybatis.xml</param-value>
+    </context-param>
 
-  <!-- 配置DispatcherServlet -->
-  <servlet>
-    <servlet-name>SpringMVC</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 配置springMVC需要加载的配置文件-->
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-*.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-    <async-supported>true</async-supported>
-  </servlet>
+    <!-- 配置Spring MVC的前端控制器：DispatchcerServlet -->
+    <!-- 用来声明一个servlet的数据 -->
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 配置springMVC需要加载的配置文件-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
 
-  <servlet-mapping>
-    <servlet-name>SpringMVC</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+    <!-- 用来定义servlet所对应的URL -->
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
-  <filter>
-    <filter-name>encoding-filter</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>UTF-8</param-value>
-    </init-param>
-    <init-param>
-      <param-name>forceEncoding</param-name>
-      <param-value>true</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>encoding-filter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    <!-- 用来声明filter的相关设定,过滤器可以截取和修改一个servlet或jsp页面的请求或从一个servlet或jsp页面发出的响应 -->
+    <filter>
+        <filter-name>encoding-filter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
 
-  <welcome-file-list>
-    <welcome-file>user_index.html</welcome-file>
-  </welcome-file-list>
+    <!-- 用来定义filter所对应的URL -->
+    <filter-mapping>
+        <filter-name>encoding-filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 定义首页列单 -->
+    <welcome-file-list>
+        <welcome-file>user_index.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

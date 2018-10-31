@@ -1,19 +1,22 @@
 package com.xiexing.serviceimpl;
 
-import com.xiexing.dao.StuMapper;
+
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.xiexing.entity.Stu;
 import com.xiexing.service.IStuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.xiexing.dao.StuMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service("stuService")
+@Service
 public class StuService implements IStuService {
 
-    @Resource
+    @Autowired
     private StuMapper stuMapper;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -23,6 +26,11 @@ public class StuService implements IStuService {
         return stuMapper.selectUser(id);
     }
 
+    /**
+     * 用户查询测试
+     *
+     * @return
+     */
     @Override
     public List<Stu> selectAllUser() {
         return stuMapper.selectAllUser();
@@ -45,7 +53,6 @@ public class StuService implements IStuService {
         } catch (Exception e) {
             logger.info(e.getMessage());
         }
-
         return flag;
     }
 
@@ -82,7 +89,7 @@ public class StuService implements IStuService {
     }
 
     /**
-     * 用户查询测试
+     * 根据账户查询
      *
      * @param name
      * @return

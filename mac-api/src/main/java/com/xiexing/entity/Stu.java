@@ -1,6 +1,8 @@
 package com.xiexing.entity;
 
-public class Stu {
+import java.io.Serializable;
+
+public class Stu implements Serializable{
     private Integer id;
 
     private String name;
