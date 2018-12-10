@@ -17,7 +17,7 @@
     <!-- 全局范围内环境参数初始化 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-mybatis.xml</param-value>
+        <param-value>classpath:springApp.xml</param-value>
     </context-param>
 
     <!-- 配置Spring MVC的前端控制器：DispatchcerServlet -->

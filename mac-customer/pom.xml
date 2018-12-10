@@ -65,12 +65,7 @@
             <version>1.1.1</version>
         </dependency>
         <!--2：数据库相关依赖 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
-            <scope>runtime</scope>
-        </dependency>
+
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
@@ -193,10 +188,19 @@
             <artifactId>mac-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.xiexing</groupId>
+            <artifactId>mac-provider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
 
