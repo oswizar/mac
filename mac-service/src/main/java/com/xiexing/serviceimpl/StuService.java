@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.xiexing.dao.StuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.convert.Property;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,10 +18,14 @@ import java.util.List;
 @Service
 public class StuService implements IStuService {
 
+
     @Autowired
+
+//    @Resource
+
     private StuMapper stuMapper;
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public Stu selectUser(int id) {
@@ -51,7 +57,7 @@ public class StuService implements IStuService {
                 flag = true;
             }
         } catch (Exception e) {
-            logger.info(e.getMessage());
+            log.info(e.getMessage());
         }
         return flag;
     }
@@ -96,6 +102,11 @@ public class StuService implements IStuService {
      */
     @Override
     public Stu selectUserByName(String name) {
-        return stuMapper.selectUserByName(name);
+        Stu stu = stuMapper.selectUserByName(name);
+        if (stu != null) {
+            log.info("根据账号名称查询User表返回数据",stu);
+        }
+        log.info("根据账号名称查询User表返回数据",stu);
+        return stu;
     }
 }

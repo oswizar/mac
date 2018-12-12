@@ -3,6 +3,9 @@ package com.xiexing.entity;
 import java.io.Serializable;
 
 public class Stu implements Serializable{
+
+    private static final long serialVersionUID = 7240063771815831652L;
+
     private Integer id;
 
     private String name;

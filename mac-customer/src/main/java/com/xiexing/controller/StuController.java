@@ -3,7 +3,8 @@ package com.xiexing.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.xiexing.entity.Stu;
 import com.xiexing.service.IStuService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class StuController {
     @Resource
     private IStuService stuService;
 
-    private Logger logger = Logger.getLogger(this.getClass());
+    private Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
      * 用户注册
@@ -39,14 +40,18 @@ public class StuController {
             Stu user = stuService.selectUserByName(registUser.getName());
             if (user != null) {
                 msg.put("msg", "账号已被注册");
+                log.info("账号已被注册");
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                 return msg;
             } else {
                 boolean flag = stuService.addUser(registUser);
                 System.out.println(flag);
                 if (flag) {
                     msg.put("msg", "注册成功");
+                    log.info("注册成功");
                     return msg;
                 } else {
+                    log.info("注册失败");
                     msg.put("msg", "注册失败");
                     return msg;
                 }
