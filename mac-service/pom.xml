@@ -15,6 +15,8 @@
     <url>http://www.example.com</url>
 
     <properties>
+        <!-- 设置 Spring 的版本 -->
+        <org.springframework.version>4.1.7.RELEASE</org.springframework.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

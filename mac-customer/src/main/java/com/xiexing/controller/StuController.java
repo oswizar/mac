@@ -1,6 +1,5 @@
 package com.xiexing.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.xiexing.entity.Stu;
 import com.xiexing.service.IStuService;
 import org.slf4j.Logger;

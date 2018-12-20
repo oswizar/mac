@@ -62,7 +62,7 @@
 
     <!-- 定义首页列单 -->
     <welcome-file-list>
-        <welcome-file>user_index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>
